@@ -37,11 +37,7 @@ form.onsubmit = (e) => {
   showPreloader(preloaderTmp, videoContainer);
   showPreloader(preloaderTmp, cardsContainer);
   const formData = serializeFormData(form);
-  const requestUrl = generateFilterRequest(
-    endpoint,
-    formData.city,
-    formData.timeArray
-  );
+  const requestUrl = generateFilterRequest(endpoint, formData.city, formData.timeArray);
   mainMechanics(requestUrl);
 };
 
@@ -69,9 +65,7 @@ async function mainMechanics(endpoint) {
       videoUrl: data.results[0].video.url,
       posterUrl: data.results[0].poster.url,
     });
-    document
-      .querySelectorAll('.content__card-link')[0]
-      .classList.add('content__card-link_current');
+    document.querySelectorAll('.content__card-link')[0].classList.add('content__card-link_current');
     await waitForReadyVideo(videoElement);
     await delay(preloaderWaitindTime);
     removePreloader(videoContainer, '.preloader');
@@ -146,14 +140,9 @@ function appendCards({ baseUrl, dataArray, cardTmp, container }) {
     const node = cardTmp.content.cloneNode(true);
     node.querySelector('a').setAttribute('id', el.id);
     node.querySelector('.content__video-card-title').textContent = el.city;
-    node.querySelector('.content__video-card-description').textContent =
-      el.description;
-    node
-      .querySelector('.content__video-card-thumbnail')
-      .setAttribute('src', `${baseUrl}${el.thumbnail.url}`);
-    node
-      .querySelector('.content__video-card-thumbnail')
-      .setAttribute('alt', el.description);
+    node.querySelector('.content__video-card-description').textContent = el.description;
+    node.querySelector('.content__video-card-thumbnail').setAttribute('src', `${baseUrl}${el.thumbnail.url}`);
+    node.querySelector('.content__video-card-thumbnail').setAttribute('alt', el.description);
     container.append(node);
   });
   console.log('Сгенерировал карточки');
@@ -197,13 +186,7 @@ function generateFilterRequest(endpoint, city, timeArray) {
 }
 
 // переключает текущее видео ✅
-function chooseCurrentVideo({
-  baseUrl,
-  videoData,
-  cardLinksSelector,
-  currentLinkClassName,
-  mainVideo,
-}) {
+function chooseCurrentVideo({ baseUrl, videoData, cardLinksSelector, currentLinkClassName, mainVideo }) {
   const cardsList = document.querySelectorAll(cardLinksSelector);
   if (cardsList) {
     cardsList.forEach((item) => {
@@ -214,9 +197,7 @@ function chooseCurrentVideo({
         });
         item.classList.add(currentLinkClassName);
         showPreloader(preloaderTmp, videoContainer);
-        const vidoObj = videoData.find(
-          (video) => String(video.id) === String(item.id)
-        );
+        const vidoObj = videoData.find((video) => String(video.id) === String(item.id));
         setVideo({
           baseUrl,
           video: mainVideo,
@@ -242,15 +223,7 @@ function showError(container, errorTemplate, errorMessage) {
 
 // вывожу больше видео, если в пагинации больше страниц, чем показано
 
-function showMoreCards({
-  dataArray,
-  buttonTemplate,
-  cardsContainer,
-  buttonSelector,
-  initialEndpoint,
-  baseUrl,
-  cardTmp,
-}) {
+function showMoreCards({ dataArray, buttonTemplate, cardsContainer, buttonSelector, initialEndpoint, baseUrl, cardTmp }) {
   if (dataArray.pagination.page === dataArray.pagination.pageCount) return;
   // добавить кнопку из темплейта в конец списка карточек
   const button = buttonTemplate.content.cloneNode(true);
