@@ -1,0 +1,122 @@
+.search-form {
+  display: grid;
+  grid-template-columns: 1fr max-content auto;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.search-form__fieldset {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5px;
+  border: unset;
+}
+
+.search-form__fieldset-title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.search-form__label {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  transition-timing-function: linear;
+  transition-duration: 0.2s;
+  transition-property: outline-color;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline-color: currentColor;
+}
+
+.search-form__label:hover .search-form__label-text {
+  text-decoration-color: currentColor;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before,
+.search-form__checkbox:not(:checked):active + .search-form__pseudo-checkbox::before {
+  opacity: 1;
+}
+
+.search-form__pseudo-checkbox {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  width: 19px;
+  height: 19px;
+  border: 1px solid currentColor;
+}
+
+.search-form__pseudo-checkbox::before {
+  display: block;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  margin: auto;
+  content: '';
+  background-color: currentColor;
+  opacity: 0;
+  transition-timing-function: linear;
+  transition-duration: 0.2s;
+  transition-property: opacity;
+}
+
+.search-form__label-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 18px;
+  line-height: normal;
+  text-decoration-skip-ink: none;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition-timing-function: linear;
+  transition-duration: 0.2s;
+  transition-property: text-decoration-color;
+}
+
+.search-form__textfield {
+  width: 100%;
+  padding: 2.5px 0;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  color: rgb(255 255 255 / 70%);
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-top-color: currentColor;
+  border-bottom-color: currentColor;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  transition-timing-function: linear;
+  transition-duration: 0.2s;
+  transition-property: border-color;
+}
+
+.search-form__textfield:focus {
+  outline: unset;
+}
+
+.search-form__textfield:active {
+  border-color: currentColor;
+}
+
+.search-form__submit-button {
+  align-self: flex-end;
+  min-width: 194px;
+}

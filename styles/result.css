@@ -1,0 +1,9 @@
+.result {
+  flex: 0 1 711px;
+}
+
+.result__video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 711 / 386;
+}
