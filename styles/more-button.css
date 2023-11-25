@@ -1,0 +1,5 @@
+.more-button {
+  width: calc(100% - 4px);
+  margin: 2px;
+  outline-offset: 1px;
+}
