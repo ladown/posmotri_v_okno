@@ -95,7 +95,7 @@
   font-size: 18px;
   font-weight: 400;
   line-height: normal;
-  color: rgb(255 255 255 / 70%);
+  color: #fff;
   appearance: none;
   background-color: transparent;
   border: 1px solid transparent;
@@ -106,6 +106,10 @@
   transition-timing-function: linear;
   transition-duration: 0.2s;
   transition-property: border-color;
+}
+
+.search-form__textfield::placeholder {
+  color: rgb(255 255 255 / 70%);
 }
 
 .search-form__textfield:focus {

@@ -113,4 +113,6 @@
   width: 194px;
   max-width: 100%;
   aspect-ratio: 194 / 103;
+  object-fit: cover;
+  object-position: center;
 }
